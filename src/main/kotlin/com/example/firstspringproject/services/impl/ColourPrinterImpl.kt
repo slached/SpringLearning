@@ -5,21 +5,16 @@ import com.example.firstspringproject.services.ColourPrinter
 import com.example.firstspringproject.services.GreenPrinter
 import com.example.firstspringproject.services.RedPrinter
 
-class ColourPrinterImpl : ColourPrinter {
+class ColourPrinterImpl(redPrinter: RedPrinter, greenPrinter: GreenPrinter, bluePrinter: BluePrinter) :
+    ColourPrinter {
 
-    private lateinit var redPrinter: RedPrinter
-    private lateinit var bluePrinter: BluePrinter
-    private lateinit var greenPrinter: GreenPrinter
-
-    fun ColourPrinterImpl() {
-        this.redPrinter = EnglishRedPrinter()
-        this.greenPrinter = EnglishGreenPrinter()
-        this.bluePrinter = EnglishBluePrinter()
-    }
+    private var redPrinter: RedPrinter = redPrinter
+    private var bluePrinter: BluePrinter = bluePrinter
+    private var greenPrinter: GreenPrinter = greenPrinter
 
     @Override
     override fun print(): String {
-        return ""
+        return "${this.redPrinter.print()} ${this.bluePrinter.print()} ${this.greenPrinter.print()}"
     }
 
 }
