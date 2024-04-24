@@ -4,7 +4,9 @@ import com.example.firstspringproject.services.BluePrinter
 import com.example.firstspringproject.services.ColourPrinter
 import com.example.firstspringproject.services.GreenPrinter
 import com.example.firstspringproject.services.RedPrinter
+import org.springframework.stereotype.Service
 
+@Service
 class ColourPrinterImpl(redPrinter: RedPrinter, greenPrinter: GreenPrinter, bluePrinter: BluePrinter) :
     ColourPrinter {
 
