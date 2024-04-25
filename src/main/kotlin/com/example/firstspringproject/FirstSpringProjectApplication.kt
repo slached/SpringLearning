@@ -1,5 +1,6 @@
-package com.example.firstspringproject.services
+package com.example.firstspringproject
 
+import com.example.firstspringproject.conf.PizzaConfig
 import org.slf4j.LoggerFactory
 import org.springframework.boot.CommandLineRunner
 import org.springframework.boot.autoconfigure.SpringBootApplication
@@ -7,13 +8,10 @@ import org.springframework.boot.runApplication
 
 
 @SpringBootApplication
-class FirstSpringProjectApplication(colourPrinter: ColourPrinter) : CommandLineRunner {
-
-    private var colourPrinter: ColourPrinter = colourPrinter
-
+class FirstSpringProjectApplication(var pizzaConfig: PizzaConfig) : CommandLineRunner {
     override fun run(vararg args: String?) {
         val log = LoggerFactory.getLogger(this::class.java)
-        log.info(colourPrinter.print())
+        log.info(pizzaConfig.crust)
     }
 }
 
