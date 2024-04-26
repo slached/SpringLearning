@@ -14,13 +14,13 @@ class MovieServiceImpl(
     private val movieMapper: MovieMapper
 ) : MovieService {
 
-    override fun createMovie(movieDTO: MovieDTO): MovieDTO {
+    override fun createMovie(body: MovieDTO): MovieDTO {
         // this will return dto but after save new movie
         // and also repo of the movie require movie entity as type: so we need to use map to convert dto into entity
         // and our function's return type is dto: so we need to reconvert entity to dto
         // if there is id in body throw exception else create new movie
-        if (movieDTO.id != -1) throw MovieException("You have entered id in body. This is restricted!")
-        else return movieMapper.fromEntity(movieRepository.save(movieMapper.toEntity(movieDTO)))
+        if (body.id != -1) throw MovieException("You have entered id in body. This is restricted!")
+        else return movieMapper.fromEntity(movieRepository.save(movieMapper.toEntity(body)))
 
     }
 
@@ -45,5 +45,16 @@ class MovieServiceImpl(
             return movieMapper.fromEntity(movie.get())
         }
     }
+
+    override fun changeMovie(body: MovieDTO): MovieDTO {
+
+        if (!movieRepository.existsById(body.id)) throw MovieException("Movie does not exists.")
+        else if (body.name == "null" || body.rating == 0.0) throw MovieException("Enter valid body type!")
+        else {
+            val alteredMovie = movieRepository.save(movieMapper.toEntity(body))
+            return movieMapper.fromEntity(alteredMovie)
+        }
+    }
+
 
 }

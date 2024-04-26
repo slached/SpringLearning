@@ -2,6 +2,6 @@ package com.example.restapi.dto
 
 data class MovieDTO(
     var id: Int = -1,
-    var name: String,
-    var rating: Double,
+    var name: String = "null",
+    var rating: Double = 0.0,
 )
