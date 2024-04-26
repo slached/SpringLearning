@@ -11,6 +11,8 @@ data class Movie(
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     var id: Int,
+
     var name: String,
+
     var rating: Double,
 )
