@@ -1,10 +1,10 @@
 package com.example.restapi.service
 
 import com.example.restapi.dto.MovieDTO
-import com.example.restapi.entity.Movie
 
 interface MovieService {
     fun createMovie(movieDTO: MovieDTO): MovieDTO
-    fun getAllMovie(): MutableIterable<Movie>
-    fun deleteMovieById(id: Int)
+    fun getAllMovie(): List<MovieDTO>
+    fun getOneMovie(id: Int): MovieDTO
+    fun deleteMovieById(id: Int): MovieDTO
 }
